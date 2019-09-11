@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+# on the glance-api node ,you will nee the Pythonbindings for librbd:
+yum install python-rbd -y

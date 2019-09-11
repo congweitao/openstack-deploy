@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+yum install ceph-common python-rbd

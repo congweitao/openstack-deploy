@@ -1,0 +1,9 @@
+export OS_PROJECT_DOMAIN_NAME=default
+export OS_USER_DOMAIN_NAME=default
+export OS_PROJECT_NAME=taishan
+export OS_USERNAME=serverworld
+export OS_PASSWORD=huawei
+export OS_AUTH_URL=http://172.170.75.11:5000/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+export PS1='[\u@\h \W(keystone)]\$ '
