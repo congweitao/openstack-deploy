@@ -9,15 +9,15 @@ yum install kubelet kubectl kubeadm -y
 }
 
 pull_k8s_images() {
-images=(kube-proxy:v1.15.0 kube-scheduler:v1.15.0 kube-controller-manager:v1.15.0 kube-apiserver:v1.15.0 etcd:3.3.10 pause:3.1 )
-for imageName in ${images[@]} ; do    
-    docker pull mirrorgooglecontainers/${imageName}
-    docker pull coredns/coredns:1.3.1  # 这个在mirrorgooglecontainers中没有
+images=(kube-proxy-arm64:v1.15.1 kube-scheduler-arm64:v1.15.1 kube-controller-manager-arm64:v1.15.1 kube-apiserver-arm64:v1.15.1  )
+for imageName in ${images[@]} ; do
+    docker pull --platform arm64 mirrorgooglecontainers/${imageName}
     docker tag mirrorgooglecontainers/$imageName k8s.gcr.io/$imageName
-    docker tag coredns/coredns:1.3.1 k8s.gcr.io/coredns:1.3.1
     docker rmi mirrorgooglecontainers/$imageName
-    docker rmi coredns/coredns:1.3.1
 done
+docker pull mirrorgooglecontainers/etcd-arm64:3.3.10 && docker tag k8s.gcr.io/etcd:3.3.10 && docker rmi mirrorgooglecontainers/etcd-arm64:3.3.10
+docker pull --platform arm64 coredns/coredns:1.5.0 && docker tag coredns/coredns:1.5.0 k8s.gcr.io/coredns:1.3.1 && docker rmi coredns/coredns:1.5.0
+docker pull --platform arm64  rancher/pause:3.1 && docker tag rancher/pause:3.1 k8s.gcr.io/pause:3.1 && docker rmi rancher/pause:3.1
 }
 
 cat >/etc/docker/daemon.json <<EOF
