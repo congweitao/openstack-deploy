@@ -1,0 +1,4 @@
+docker pull --plarform arm64 nginx
+kubectl create -f deployment.yaml
+kubectl delete deployment nginx-deployment
+
