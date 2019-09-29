@@ -18,8 +18,8 @@
 为了使群集中的所有节点都有运行Pods的机会，调度程序以循环方式遍历节点。您可以想象节点在数组中。调度程序从数组的开头开始，检查节点的可行性，直到找到由`percentOfNodesToScore`指定的足够的节点为止。对于下一个Pod，调度程序从检查先前Pod的Nodes可行性时停止在Node数组中的位置继续。
 
 如果节点在多个区域中，则调度程序会在各个区域中的节点上进行迭代，以确保在可行性检查中考虑来自不同区域的节点。例如，考虑两个区域中的六个节点:    
-`Zone 1: Node 1, Node 2, Node 3, Node 4    
-Zone 2: Node 5, Node 6`
+`Zone 1: Node 1, Node 2, Node 3, Node 4`     
+`Zone 2: Node 5, Node 6`
 
 调度程序按以下顺序评估节点的可行性:    
 `Node 1, Node 5, Node 2, Node 6, Node 3, Node 4`    
